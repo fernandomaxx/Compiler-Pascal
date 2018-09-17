@@ -1,0 +1,20 @@
+program oi;   {programa exemplo
+fefesfsefsefsf}
+
+var oi: integer;
+    xau: boolean;
+procedure oi (oi:integer; td:real);
+    begin
+        oi := true;
+    end;
+
+    begin
+        //xau := (220);
+        while (1 > 4) do
+           begin
+
+           end
+
+    end
+
+    .

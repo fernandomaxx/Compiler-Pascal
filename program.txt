@@ -1,0 +1,32 @@
+program proj; {programa teste}
+var
+   a, b  : integer;
+   valor   : real;
+   soma: integer;
+
+procedure Somaintervalo (menor:integer; maior:integer);
+begin
+    i := menor + 1;
+    aux := 0;
+    while( i < maior) do
+    begin
+        aux := aux + i;
+    end;
+end;
+$
+procedure Somaintervalo (menor:integer; maior:integer);
+begin
+    i := menor + 1;
+    aux := 0;
+    while( i < maior) do
+    begin
+        aux := aux + i;
+    end;
+end;
+
+begin
+
+a := b
+
+end
+.
