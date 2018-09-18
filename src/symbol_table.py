@@ -49,3 +49,12 @@ class SymbolTable(object):
         while self.list[-1] != self.mark:
             self.pop()
         self.pop()
+
+    def set_type(self, type):
+        i = -1
+        while True:
+            if self.list[i] == '?':
+                self.list[i] = type
+                i -= 1
+            else:
+                break

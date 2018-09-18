@@ -1,4 +1,8 @@
 import sys
+import traceback
+
+from src.symbol_table import SymbolTable
+from src.pct import Pct
 
 
 class SyntacticAnalyzer(object):
@@ -7,15 +11,21 @@ class SyntacticAnalyzer(object):
         self.list_tokens = list_tokens
         self.index = -1
         self.flag_do = 0
+        self.symbol_table = SymbolTable()  # Semantic
+        self.pct = Pct()
+        self.scope = 0  # Semantic
 
     def program(self):
         if self.next_token().token == 'program':
+            self.symbol_table.begin_scope()  # Semantic
             if self.next_token().tokenType == 'Identificador':
+                self.symbol_table.add_symbol(self.get_token().token, 'program')  # Semantic
                 if self.next_token().token == ';':
                     self.variable_declaration()
                     self.subprograms_declarations()
                     self.composed_commands()
                     if self.next_token().token == '.':
+                        self.symbol_table.end_scope()  # Semantic
                         print('sucesso')
                     else:
                         self.syntax_error('.')
@@ -27,14 +37,13 @@ class SyntacticAnalyzer(object):
         else:
             self.syntax_error('program')
 
-    # aponta para o próximo token da lista
+    ''' Help Functions '''
     def previous_token(self):
         if (self.index - 1) > 0:
             return self.list_tokens[self.index - 1]
         else:
             sys.exit("out range")
 
-    # utilities
     def next_token(self):
         if (self.index + 1) < len(self.list_tokens):
             self.index += 1
@@ -42,17 +51,14 @@ class SyntacticAnalyzer(object):
         else:
             sys.exit("out range")
 
-    # trata os erros de sintax
     def syntax_error(self, expected):
         ct = self.get_token()
         sys.exit('Syntax error, "{}" expected but "{}" found in line {}'.format(expected, ct.token, ct.line))
 
-    # retorna o token atual
     def get_token(self):
         return self.list_tokens[self.index]
 
-
-    # Início da analise de variáveis #
+    ''' SyntacticAnalyzer Functions '''
     def variable_declaration(self):
         if self.next_token().token == 'var':
             self.list_var_declarations(True)
@@ -80,6 +86,7 @@ class SyntacticAnalyzer(object):
 
     def list_identifiers(self):
         if self.next_token().tokenType == 'Identificador':
+            self.verify_scope(self.get_token().token)  # Semantic
             self.list_identifiers_()
             return True
         else:
@@ -89,6 +96,7 @@ class SyntacticAnalyzer(object):
     def list_identifiers_(self):
         if self.next_token().token == ',':
             if self.next_token().tokenType == 'Identificador':
+                self.verify_scope(self.get_token().token)  # Semantic
                 self.list_identifiers_()
             else:
                 self.syntax_error('Identificador')
@@ -97,6 +105,7 @@ class SyntacticAnalyzer(object):
 
     def type(self):
         if self.next_token().token in ['integer', 'boolean', 'real']:
+            self.symbol_table.set_type(self.get_token().token)  # Semantic
             return
         else:
             self.syntax_error('Tipo')
@@ -116,6 +125,8 @@ class SyntacticAnalyzer(object):
     def subprogram_declaration(self):
         if self.next_token().token == 'procedure':
             if self.next_token().tokenType == 'Identificador':
+                self.symbol_table.add_symbol(self.get_token().token, 'procedure')  # Semantic
+                self.symbol_table.begin_scope()  # Semantic
                 self.arguments()
                 if self.next_token().token == ';':
                     self.variable_declaration()
@@ -148,7 +159,7 @@ class SyntacticAnalyzer(object):
             self.syntax_error(':')
 
     def list_parameters__(self):
-        if self.next_token().token == ';': #ainda existe mais parâmetros para ser verificado
+        if self.next_token().token == ';':  # ainda existe mais parâmetros para ser verificado
             self.list_identifiers()
             if self.next_token().token == ':':
                 self.type()
@@ -164,8 +175,12 @@ class SyntacticAnalyzer(object):
 
     def composed_commands(self):
         if self.next_token().token == 'begin':
+            self.scope += 1  # Semantic
             self.options_commands()
             if self.next_token().token == 'end':
+                self.scope -= 1  # Semantic
+                if not self.scope:  # Semantic
+                    self.symbol_table.end_scope()  # Semantic
                 return True
             else:
                 self.syntax_error('end')
@@ -357,4 +372,24 @@ class SyntacticAnalyzer(object):
         else:
             self.index -= 1
             return False
+
+    ''' Semantic '''
+    def verify_typesId(self, type_id, pct_top):
+        line = self.get_token().line
+        if type_id == 'integer' and pct_top == 'real':
+            sys.exit('Erro linha {}! Incompatibilade de tipos: Atribuindo um valor real a uma variável inteira'.format(line))
+        if type_id in ['integer', 'real'] == pct_top == 'boolean':
+            sys.exit('Erro linha {}! Incompatibilade de tipos: Atribuindo um valor booleano a uma variável {}'.format(line, type_id))
+        if type_id == 'boolean' and pct_top in ['integer', 'real']:
+            sys.exit('Erro linha {}! Incompatibilade de tipos: Atribuindo um valor {} em uma variavel boolean'.format(line, pct_top))
+
+        self.pct.pop()
+
+    def verify_scope(self, symbol):
+        if self.scope:
+            if not self.symbol_table.search_symbol(symbol.token):
+                sys.exit('Erro linha {}! Simbolo {} nao declarado'.format(symbol.line, symbol.token))
+        else:
+            if not  self.symbol_table.add_symbol(symbol.token, '?'):
+                sys.exit("Erro linha {}! Simbolo {} ja foi declarado no mesmo escopo".format(symbol.line, symbol.token))
 

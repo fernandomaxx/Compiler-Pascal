@@ -5,28 +5,21 @@ var
    soma: integer;
 
 procedure Somaintervalo (menor:integer; maior:integer);
+var i, aux, c: integer;
+    procedure teste(lol:real);
+    begin
+    end;
 begin
     i := menor + 1;
     aux := 0;
     while( i < maior) do
     begin
-        aux := aux + i;
-    end;
-end;
-$
-procedure Somaintervalo (menor:integer; maior:integer);
-begin
-    i := menor + 1;
-    aux := 0;
-    while( i < maior) do
-    begin
+        soma := 0;
         aux := aux + i;
     end;
 end;
 
 begin
-
-a := b
 
 end
 .
