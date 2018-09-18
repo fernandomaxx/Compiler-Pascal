@@ -11,20 +11,21 @@ class SymbolTable(object):
         self.list.append(symbol)
 
     def isempty(self):
-        return [True if len(self.list) == 0 else False]
+        return not self.list
 
     def pop(self):
         if not self.isempty():
             self.list.pop(-1)
 
     def add_symbol(self, identifier, type):
+        self.printStack()
         if self.isempty():
             self.push(identifier)
             return
 
         i = -1
 
-        while self.list[i] != self.mark and self.list[i].identifier != identifier:
+        while self.list[i].identifier != self.mark and self.list[i].identifier != identifier:
             i -= 1
 
         if self.list[i].identifier == self.mark:
@@ -46,9 +47,12 @@ class SymbolTable(object):
         if self.isempty():
             return
 
-        while self.list[-1] != self.mark:
+        while self.list[-1].identifier != self.mark:
             self.pop()
         self.pop()
+
+    def printStack(self):
+        print ('[{}]'.format(self.list))
 
     def set_type(self, type):
         i = -1

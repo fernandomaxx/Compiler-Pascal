@@ -86,7 +86,7 @@ class SyntacticAnalyzer(object):
 
     def list_identifiers(self):
         if self.next_token().tokenType == 'Identificador':
-            self.verify_scope(self.get_token().token)  # Semantic
+            self.verify_scope(self.get_token())  # Semantic
             self.list_identifiers_()
             return True
         else:
@@ -96,7 +96,7 @@ class SyntacticAnalyzer(object):
     def list_identifiers_(self):
         if self.next_token().token == ',':
             if self.next_token().tokenType == 'Identificador':
-                self.verify_scope(self.get_token().token)  # Semantic
+                self.verify_scope(self.get_token())  # Semantic
                 self.list_identifiers_()
             else:
                 self.syntax_error('Identificador')
@@ -248,6 +248,7 @@ class SyntacticAnalyzer(object):
 
     def variable(self):
         if self.next_token().tokenType == 'Identificador':
+            self.verify_scope(self.get_token())  # Semantic
             return True
         else:
             self.index -= 1
@@ -317,6 +318,8 @@ class SyntacticAnalyzer(object):
     def factor(self):
         temp = self.next_token()
         if temp.tokenType == 'Identificador':
+            self.verify_scope(self.get_token())  # Semantic
+
             if self.next_token() == '(':
                 self.list_expressions()
                 if self.next_token().token == ')':
@@ -387,8 +390,11 @@ class SyntacticAnalyzer(object):
 
     def verify_scope(self, symbol):
         if self.scope:
-            if not self.symbol_table.search_symbol(symbol.token):
+            symbol_temp = self.symbol_table.search_symbol(symbol.token)
+            if not symbol_temp:
                 sys.exit('Erro linha {}! Simbolo {} nao declarado'.format(symbol.line, symbol.token))
+            elif symbol_temp.type == 'program':
+                sys.exit('ERRO! O nome do programa nao pode ser usado em comandos e expressoes')
         else:
             if not  self.symbol_table.add_symbol(symbol.token, '?'):
                 sys.exit("Erro linha {}! Simbolo {} ja foi declarado no mesmo escopo".format(symbol.line, symbol.token))
