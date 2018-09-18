@@ -37,8 +37,9 @@ class Pct(object):
         elif top == 'real' and sub_top == 'integer':
             self.actualize_pct('real')
         else:
-            print(top + ' - ' + sub_top)
+            #print('arithmetic ' + top + ' - ' + sub_top)
             return False
+        #print('arithmetic ' + top + ' - ' + sub_top)
         return True
 
     def type_checking_relational(self):
@@ -49,8 +50,9 @@ class Pct(object):
         if top in types and sub_top in types:
             self.actualize_pct('boolean')
         else:
-            print(top + ' - ' + sub_top)
+            #print('relational ' + top + ' - ' + sub_top)
             return False
+        #print('relational ' + top + ' - ' + sub_top)
         return True
 
     def type_checking_logical(self):
@@ -60,6 +62,7 @@ class Pct(object):
         if top == 'boolean' and sub_top == 'boolean':
             self.actualize_pct('boolean')
         else:
-            print(top + ' - ' + sub_top)
+            #print('logical ' + top + ' - ' + sub_top)
             return False
+        #print('logical ' + top + ' - ' + sub_top)
         return True

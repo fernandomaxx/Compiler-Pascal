@@ -18,7 +18,6 @@ class SymbolTable(object):
             self.list.pop(-1)
 
     def add_symbol(self, identifier, type):
-        self.printStack()
         if self.isempty():
             self.push(identifier)
             return
@@ -52,13 +51,15 @@ class SymbolTable(object):
         self.pop()
 
     def printStack(self):
-        print ('[{}]'.format(self.list))
+        for x in self.list:
+            print ('[{}, {}]'.format(x.identifier, x.type), end='')
+        print()
 
     def set_type(self, type):
         i = -1
         while True:
-            if self.list[i] == '?':
-                self.list[i] = type
+            if self.list[i].type == '?':
+                self.list[i].type = type
                 i -= 1
             else:
                 break

@@ -3,19 +3,21 @@ var
    a, b  : integer;
    valor   : real;
    soma: integer;
+   flag: boolean;
 
 procedure Somaintervalo (menor:integer; maior:integer);
 var i, aux, c: integer;
+    val : real;
     procedure teste(lol:real);
     begin
+        soma := 5 + b
     end;
 begin
-    i := menor + 1;
+    val := valor + 1.10 * 0.5;
     aux := 0;
-    while( i < maior) do
+    while(true and (i < 5) and false) do
     begin
         soma := 0;
-        aux := aux + i;
     end;
 end;
 

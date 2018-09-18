@@ -204,8 +204,10 @@ class SyntacticAnalyzer(object):
 
     def command(self):
         if self.variable():
+            temp_typeId = self.symbol_table.search_symbol(self.get_token().token).type  # Semantic [type_control]
             if self.next_token().token == ':=':
                 self.expression()
+                self.verify_typesId(temp_typeId, self.pct.pop())  # Semantic [type_control]
                 return
             else:
                 self.syntax_error(':=')
@@ -284,6 +286,11 @@ class SyntacticAnalyzer(object):
         if self.simple_expression():
             if self.op_relational():
                 self.simple_expression()
+
+                ''' Semantic [type_control] '''
+                if not self.pct.type_checking_relational():
+                    sys.exit('Error linha {}! Incompatibilidade de tipos: Comparacoes realizadas entre tipos que nao seja integer ou real'.format(self.get_token().line))
+
         else:
             self.syntax_error('Expressao')
 
@@ -300,8 +307,17 @@ class SyntacticAnalyzer(object):
 
     def simple_expression_(self):
         if self.op_additive():
+            op = self.get_token().token  # Semantic [type_control]
             self.term()
             self.simple_expression_()
+
+            ''' Semantic [type_control] '''
+            if op == 'or':
+                if not self.pct.type_checking_logical():
+                    sys.exit('Error linha {}! Incompatibilidade de tipos: Op logicas com outros tipos'.format(self.get_token().line))
+            else:
+                if not self.pct.type_checking_arithmetic():
+                    sys.exit('Error linha {}! Incompatibilidade de tipos: Op aritimeticas com outros tipos'.format(self.get_token().line))
 
     def term(self):
         if self.factor():
@@ -312,13 +328,25 @@ class SyntacticAnalyzer(object):
 
     def term_(self):
         if self.op_multi():
+            op = self.get_token().token  # Semantic [type_control]
             self.factor()
             self.term_()
+
+            ''' Semantic [type_control] '''
+            if op == 'and':
+                if not self.pct.type_checking_logical():
+                    sys.exit('Error linha {}! Incompatibilidade de tipos: Op logicas com outros tipos'.format(
+                        self.get_token().line))
+            else:
+                if not self.pct.type_checking_arithmetic():
+                    sys.exit('Error linha {}! Incompatibilidade de tipos: Op aritimeticas com outros tipos'.format(
+                        self.get_token().line))
 
     def factor(self):
         temp = self.next_token()
         if temp.tokenType == 'Identificador':
             self.verify_scope(self.get_token())  # Semantic
+            self.pct.push(self.symbol_table.search_symbol(self.get_token().token).type)  # Semantic [type_control]
 
             if self.next_token() == '(':
                 self.list_expressions()
@@ -330,10 +358,13 @@ class SyntacticAnalyzer(object):
                 self.index -= 1
                 return True
         elif temp.tokenType == 'Numero inteiro':
+            self.pct.push('integer')  # Semantic [type_control]
             return True
         elif temp.tokenType == 'Numero real':
+            self.pct.push('real')  # Semantic [type_control]
             return True
         elif temp.token in ['true', 'false']:
+            self.pct.push('boolean')  # Semantic [type_control]
             return True
         elif temp.token == '(':
             self.expression()
