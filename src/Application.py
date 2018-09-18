@@ -40,7 +40,7 @@ if __name__ == '__main__':
     root = tk.Tk()
     ref_cod = open("../program.txt", 'r')
     File = ref_cod.readlines()
-    ref_reserved = open("../PalavrasReservadas.txt", 'r')
+    ref_reserved = open("../reservedwords.txt", 'r')
     reserved = ref_reserved.readlines()
     lexical = lexical_analyzer.LexicalAnalyzer(File, reserved)
     lexical.delComments()

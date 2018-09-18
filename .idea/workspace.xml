@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80d2e42c-2c56-4b92-91b5-a7b81bb6d405" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pct.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pct.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/symbol_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbol_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/syntactic_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/syntactic_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codigo.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,7 +17,7 @@
     <SUITE FILE_PATH="coverage/analisadorlexico$teste.coverage" NAME="teste Coverage Results" MODIFIED="1536091948592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Compiler$syntactic_analyzer.coverage" NAME="syntactic_analyzer Coverage Results" MODIFIED="1536157688910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Compiler$Application.coverage" NAME="Application Coverage Results" MODIFIED="1537295166250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/Compiler$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1537295392602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Compiler$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1537296004705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -104,15 +98,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Codigo.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Codigo.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="syntactic_analyzer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/syntactic_analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -125,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+            <state relative-caret-position="255">
+              <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
               <folding>
                 <element signature="e#1#49#0" expanded="true" />
               </folding>
@@ -155,7 +140,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="symbol_table.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="symbol_table.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/symbol_table.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
@@ -428,13 +413,14 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32992035" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50061125" side_tool="true" weight="0.32992035" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49938875" visible="true" weight="0.3277027" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49938875" weight="0.3277027" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.33333334" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32992035" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09046455" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09046455" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3294621" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32882884" />
       <window_info anchor="right" id="SciView" order="3" weight="0.3299748" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3885135" />
@@ -445,7 +431,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32882884" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32995495" />
     </layout>
   </component>
@@ -731,20 +716,6 @@
     <entry file="file://$PROJECT_DIR$/src/init.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="320" selection-start-line="320" selection-end-line="320" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codigo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/syntactic_analyzer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -779,16 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding>
-            <element signature="e#1#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pct.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -800,6 +761,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codigo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="320" selection-start-line="320" selection-end-line="320" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+          <folding>
+            <element signature="e#1#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
